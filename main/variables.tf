@@ -1,8 +1,23 @@
 variable "var_project" {
-  default = "project-name"
+  default = "goodplaces-app"
 }
 
-# Should be updated before prod. Just used the image that was uploaded as test.
+# If null, use the hello world image (this is useful on the first run when we
+# don't have any images)
 variable "var_image_location" {
-  default = "us-central1-docker.pkg.dev/goodplaces-app/jimo-server-build-test/server-test:latest"
+  type = string
+}
+
+variable "db_username" {
+  type      = string
+  sensitive = true
+}
+
+variable "db_password" {
+  type      = string
+  sensitive = true
+}
+
+variable "artifact_repo" {
+  default = "jimo-server-repo"
 }
