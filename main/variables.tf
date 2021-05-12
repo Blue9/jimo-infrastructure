@@ -18,6 +18,11 @@ variable "db_password" {
   sensitive = true
 }
 
+variable "default_postgres_password" {
+  type      = string
+  sensitive = true
+}
+
 variable "artifact_repo" {
   default = "jimo-server-repo"
 }

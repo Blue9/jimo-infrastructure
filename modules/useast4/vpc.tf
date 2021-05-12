@@ -18,7 +18,7 @@ resource "google_service_networking_connection" "private_vpc_connection" {
   reserved_peering_ranges = [google_compute_global_address.private_ip_block.name]
 }
 
-# Allow Cloud run to connect
+# Allow Cloud run to connect via private IP
 resource "google_vpc_access_connector" "vpc_connector" {
   name          = "vpc-connector"
   region        = var.region_code
