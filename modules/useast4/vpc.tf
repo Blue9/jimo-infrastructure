@@ -20,8 +20,9 @@ resource "google_service_networking_connection" "private_vpc_connection" {
 
 # Allow Cloud run to connect via private IP
 resource "google_vpc_access_connector" "vpc_connector" {
-  name          = "vpc-connector"
-  region        = var.region_code
-  ip_cidr_range = "10.8.0.0/28"
-  network       = google_compute_network.vpc.name
+  name           = "vpc-connector"
+  max_throughput = 1000
+  region         = var.region_code
+  ip_cidr_range  = "10.8.0.0/28"
+  network        = google_compute_network.vpc.name
 }
