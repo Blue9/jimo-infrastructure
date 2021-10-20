@@ -6,6 +6,11 @@ variable "image" {
   type = string
 }
 
+variable "background_tasks_image" {
+  type = string
+}
+
+
 variable "db_username" {
   type      = string
   sensitive = true

@@ -8,6 +8,10 @@ variable "var_image_location" {
   type = string
 }
 
+variable "var_background_tasks_image" {
+  type = string
+}
+
 variable "db_username" {
   type      = string
   sensitive = true

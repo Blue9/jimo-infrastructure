@@ -22,6 +22,7 @@ module "useast4" {
   source                    = "../modules/useast4"
   project                   = var.var_project
   image                     = var.var_image_location
+  background_tasks_image    = var.var_background_tasks_image
   db_username               = var.db_username
   db_password               = var.db_password
   default_postgres_password = var.default_postgres_password
