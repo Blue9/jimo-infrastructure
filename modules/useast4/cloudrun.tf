@@ -69,7 +69,7 @@ resource "google_cloud_run_service" "background_tasks" {
     spec {
       containers {
         # Use the image variable if defined, otherwise default to hello world
-        image = var.image == "" ? "gcr.io/cloudrun/hello" : var.image
+        image = var.background_tasks_image == "" ? "gcr.io/cloudrun/hello" : var.background_tasks_image
 
         # Open port 80
         ports {
@@ -79,8 +79,8 @@ resource "google_cloud_run_service" "background_tasks" {
 
         # Get the connection name dynamically from the DB
         env {
-          name  = var.image == "" ? null : "DATABASE_URL"
-          value = var.image == "" ? null : "postgresql://${google_sql_user.db_user.name}:${google_sql_user.db_user.password}@${google_sql_database_instance.primary.private_ip_address}/${google_sql_database.main.name}"
+          name  = var.background_tasks_image == "" ? null : "DATABASE_URL"
+          value = var.background_tasks_image == "" ? null : "postgresql://${google_sql_user.db_user.name}:${google_sql_user.db_user.password}@${google_sql_database_instance.primary.private_ip_address}/${google_sql_database.main.name}"
         }
 
         resources {
@@ -104,7 +104,7 @@ resource "google_cloud_run_service" "background_tasks" {
         "run.googleapis.com/cloudsql-instances"   = google_sql_database_instance.primary.connection_name
         "run.googleapis.com/vpc-access-connector" = google_vpc_access_connector.vpc_connector.name
         "run.googleapis.com/vpc-access-egress"    = "private-ranges-only"
-        "client.knative.dev/user-image"           = var.image == "" ? null : var.image
+        "client.knative.dev/user-image"           = var.background_tasks_image == "" ? null : var.background_tasks_image
       }
     }
   }
