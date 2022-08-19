@@ -1,3 +1,7 @@
+variable "region_code" {
+  default = "us-east4"
+}
+
 variable "project" {
   type = string
 }
@@ -5,11 +9,6 @@ variable "project" {
 variable "image" {
   type = string
 }
-
-variable "background_tasks_image" {
-  type = string
-}
-
 
 variable "db_username" {
   type      = string
@@ -30,6 +29,6 @@ variable "artifact_repo" {
   type = string
 }
 
-variable "region_code" {
-  default = "us-east4"
+variable "allow_origin" {
+  type = string
 }
