@@ -2,13 +2,17 @@ variable "var_project" {
   default = "goodplaces-app"
 }
 
+variable "artifact_repo" {
+  default = "jimo-server-repo"
+}
+
+variable "allow_origin" {
+  default = "https://missioncontrol.jimoapp.com"
+}
+
 # If null, use the hello world image (this is useful on the first run when we
 # don't have any images)
 variable "var_image_location" {
-  type = string
-}
-
-variable "var_background_tasks_image" {
   type = string
 }
 
@@ -25,8 +29,4 @@ variable "db_password" {
 variable "default_postgres_password" {
   type      = string
   sensitive = true
-}
-
-variable "artifact_repo" {
-  default = "jimo-server-repo"
 }
